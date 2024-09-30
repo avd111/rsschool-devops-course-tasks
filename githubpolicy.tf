@@ -2,6 +2,7 @@ resource "aws_iam_role" "GithubActionsRole" {
   name = "GithubActionsRole"
 
   assume_role_policy = jsonencode({
+<<<<<<< HEAD
     "Version" : "2012-10-17",
     "Statement" : [
       {
@@ -10,6 +11,16 @@ resource "aws_iam_role" "GithubActionsRole" {
         "Sid" : ""
         "Principal" : {
           "Service" : "ec2.amazonaws.com"
+=======
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Action": "sts:AssumeRole"
+        "Effect": "Allow"
+        "Sid": ""
+        "Principal": {
+          "Service": "ec2.amazonaws.com"
+>>>>>>> main
         }
       },
     ]

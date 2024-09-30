@@ -31,6 +31,7 @@ jobs:
         uses: hashicorp/setup-terraform@v2
 
       - name: Terraform Init
+<<<<<<< HEAD
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -40,12 +41,21 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+=======
+        run: terraform init
+
+      - name: Terraform Plan
+>>>>>>> main
         run: terraform plan
 
   terraform-apply:
     needs: terraform-plan
     runs-on: ubuntu-latest
+<<<<<<< HEAD
     if: github.ref == 'refs/heads/task_1'
+=======
+    if: github.ref == 'refs/heads/task_1' 
+>>>>>>> main
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -54,6 +64,7 @@ jobs:
         uses: hashicorp/setup-terraform@v2
 
       - name: Terraform Init
+<<<<<<< HEAD
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -63,5 +74,10 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+=======
+        run: terraform init
+
+      - name: Terraform Apply
+>>>>>>> main
         run: terraform apply -auto-approve
 

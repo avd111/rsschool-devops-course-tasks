@@ -4,6 +4,7 @@ resource "aws_iam_policy" "policy" {
   description = "My test policy"
 
   policy = jsonencode({
+<<<<<<< HEAD
     "Version" : "2012-10-17",
     "Statement" : [
       {
@@ -16,6 +17,20 @@ resource "aws_iam_policy" "policy" {
         "Action" : ["s3:GetObject", "s3:PutObject"],
         "Resource" : "arn:aws:s3:::examples3serverdemo/terraform.tfstate"
       }
+=======
+    "Version": "2012-10-17",
+    "Statement": [
+     {
+      "Effect": "Allow",
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3:::examples3serverdemo"
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["s3:GetObject", "s3:PutObject"],
+      "Resource": "arn:aws:s3:::examples3serverdemo/terraform.tfstate"
+     }
+>>>>>>> main
     ]
   })
 }

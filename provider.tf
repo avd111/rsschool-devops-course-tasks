@@ -7,6 +7,9 @@ terraform {
   }
 }
 
+<<<<<<< HEAD
 provider "aws" {
   region = "eu-north-1"
 }
+=======
+>>>>>>> main
