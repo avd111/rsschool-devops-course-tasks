@@ -1,6 +1,12 @@
 name: Terraform Deployment Workflow for 3 jobs.
 
-name: Terraform Workflow
+on:
+  push:
+    branches:
+      - task_1 
+  pull_request:
+    branches:
+      - task_1 
 
 jobs:
   terraform-check:
