@@ -1,12 +1,6 @@
 name: Terraform Deployment Workflow for 3 jobs.
 
-on:
-  push:
-    branches:
-      - task_1 
-  pull_request:
-    branches:
-      - task_1 
+name: Terraform Workflow
 
 jobs:
   terraform-check:
@@ -31,15 +25,21 @@ jobs:
         uses: hashicorp/setup-terraform@v2
 
       - name: Terraform Init
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: terraform init
 
       - name: Terraform Plan
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: terraform plan
 
   terraform-apply:
     needs: terraform-plan
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/task_1' 
+    if: github.ref == 'refs/heads/task_1'
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -48,8 +48,14 @@ jobs:
         uses: hashicorp/setup-terraform@v2
 
       - name: Terraform Init
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: terraform init
 
       - name: Terraform Apply
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: terraform apply -auto-approve
 
