@@ -3,7 +3,7 @@ name: Terraform Deployment Workflow for 3 jobs.
 on:
   push:
     branches:
-      - task_2 
+      - main 
   pull_request:
     branches:
       - task_2 
